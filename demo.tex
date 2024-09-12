@@ -1,14 +1,60 @@
 % This is a simple sample document.  For more complicated documents take a look in the exercise tab. Note that everything that comes after a % symbol is treated as comment and ignored when the code is compiled.
 
-\documentclass{article} % \documentclass{} is the first command in any LaTeX code.  It is used to define what kind of document you are creating such as an article or a book, and begins the document preamble
+\documentclass[journal=jacsat,manuscript=article]{achemso}
 
-\usepackage{amsmath} % \usepackage is a command that allows you to add functionality to your LaTeX code
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+\usepackage{balance}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{rotating}
+\newcommand*\mycommand[1]{\texttt{\emph{#1}}}
+%% ---
+\usepackage{hyperref}
+\urlstyle{same}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{bm}
+%% Highlighting
+\usepackage{soul}
+\usepackage[table,usenames,dvipsnames]{xcolor}
+\newcommand{\er}[1]{{\textcolor{Mahogany}{ER: \sf #1}}} % Notes by ER
+\newcommand{\ab}[1]{{\textcolor{blue}{AB: \sf #1}}} % Notes by AB
+\newcommand{\comment}[1]{} % comment in block, hide text
+
+%% Line numbering ---
+\usepackage[pagewise]{lineno}
+\def\vsmall{\fontsize{9pt}{9pt}\selectfont}
+\renewcommand{\linenumberfont}{\normalfont\sffamily\vsmall\color{lightgray}}
+\linenumbers
+%% ---
+%% Page header
+\makeatletter
+\def\vsmall{\fontsize{9pt}{9pt}\selectfont}
+\renewcommand{\@oddhead}{{\vsmall\sf%
+\hfill\textcolor{gray}{Draft version, \today}}}
+\renewcommand{\@evenhead}{\@oddhead}
+\makeatother 
+
+\author{Evgenii M.~Roginskii}
+\affiliation[Ioffe Institute]{Ioffe
+Institute, Polytekhnicheskaya 26, 194021 St. Petersburg, Russia}
+\email{e.roginskii@mail.ioffe.ru}
 
 \title{Simple Sample} % Sets article title
-\author{My Name} % Sets authors name
-\date{\today} % Sets date for date compiled
+%\date{\today} % Sets date for date compiled
+\abbreviations{Raman, non-linear optics, DFT}
+\keywords{keyword1, keywors2}
 
-% The preamble ends with the command \begin{document}
+\begin{abstract}
+  We provide an ab-initio computational procedure 
+\end{abstract}
+
+
+
 \begin{document} % All begin commands must be paired with an end command somewhere
 \maketitle % creates title using information in preamble (title, author, date)
 
